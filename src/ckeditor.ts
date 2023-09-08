@@ -163,6 +163,7 @@ class Editor extends ClassicEditor {
 	];
 
 	public static override defaultConfig = {
+		'fullPage': true,
 		toolbar: {
 			items: [
 				'heading',
