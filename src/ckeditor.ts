@@ -5,9 +5,7 @@
 
 import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
 
-import { UploadAdapter } from '@ckeditor/ckeditor5-adapter-ckfinder';
 import { Alignment } from '@ckeditor/ckeditor5-alignment';
-import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
 import { Autosave } from '@ckeditor/ckeditor5-autosave';
 import {
 	Bold,
@@ -24,7 +22,7 @@ import { CodeBlock } from '@ckeditor/ckeditor5-code-block';
 import { Essentials } from '@ckeditor/ckeditor5-essentials';
 import { FindAndReplace } from '@ckeditor/ckeditor5-find-and-replace';
 import { FontBackgroundColor, FontColor, FontFamily, FontSize } from '@ckeditor/ckeditor5-font';
-import { Heading, Title } from '@ckeditor/ckeditor5-heading';
+import { Heading } from '@ckeditor/ckeditor5-heading';
 import { Highlight } from '@ckeditor/ckeditor5-highlight';
 import { HorizontalLine } from '@ckeditor/ckeditor5-horizontal-line';
 import { HtmlEmbed } from '@ckeditor/ckeditor5-html-embed';
@@ -48,12 +46,10 @@ import { Indent, IndentBlock } from '@ckeditor/ckeditor5-indent';
 import { TextPartLanguage } from '@ckeditor/ckeditor5-language';
 import { AutoLink, Link, LinkImage } from '@ckeditor/ckeditor5-link';
 import { List, ListProperties, TodoList } from '@ckeditor/ckeditor5-list';
-import { Markdown } from '@ckeditor/ckeditor5-markdown-gfm';
 import { MediaEmbed, MediaEmbedToolbar } from '@ckeditor/ckeditor5-media-embed';
 import { Mention } from '@ckeditor/ckeditor5-mention';
 import { PageBreak } from '@ckeditor/ckeditor5-page-break';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
-import { PasteFromOffice } from '@ckeditor/ckeditor5-paste-from-office';
 import { RemoveFormat } from '@ckeditor/ckeditor5-remove-format';
 import { StandardEditingMode } from '@ckeditor/ckeditor5-restricted-editing';
 import { SelectAll } from '@ckeditor/ckeditor5-select-all';
@@ -77,8 +73,6 @@ import {
 	TableProperties,
 	TableToolbar
 } from '@ckeditor/ckeditor5-table';
-import { TextTransformation } from '@ckeditor/ckeditor5-typing';
-import { EditorWatchdog } from '@ckeditor/ckeditor5-watchdog';
 import { WordCount } from '@ckeditor/ckeditor5-word-count';
 
 // You can read more about extending the build with additional plugins in the "Installing plugins" guide.
@@ -89,7 +83,6 @@ class Editor extends ClassicEditor {
 		Alignment,
 		AutoImage,
 		AutoLink,
-		Autoformat,
 		Autosave,
 		BlockQuote,
 		Bold,
@@ -124,13 +117,11 @@ class Editor extends ClassicEditor {
 		LinkImage,
 		List,
 		ListProperties,
-		Markdown,
 		MediaEmbed,
 		MediaEmbedToolbar,
 		Mention,
 		PageBreak,
 		Paragraph,
-		PasteFromOffice,
 		RemoveFormat,
 		SelectAll,
 		ShowBlocks,
@@ -154,16 +145,12 @@ class Editor extends ClassicEditor {
 		TableProperties,
 		TableToolbar,
 		TextPartLanguage,
-		TextTransformation,
-		Title,
 		TodoList,
 		Underline,
-		UploadAdapter,
 		WordCount
 	];
 
 	public static override defaultConfig = {
-		'fullPage': true,
 		toolbar: {
 			items: [
 				'heading',
@@ -184,8 +171,8 @@ class Editor extends ClassicEditor {
 				'undo',
 				'redo',
 				'alignment',
-				'code',
 				'codeBlock',
+				'code',
 				'findAndReplace',
 				'fontBackgroundColor',
 				'fontColor',
@@ -196,9 +183,11 @@ class Editor extends ClassicEditor {
 				'htmlEmbed',
 				'imageInsert',
 				'pageBreak',
+				'removeFormat',
 				'selectAll',
 				'showBlocks',
-				'removeFormat',
+				'sourceEditing',
+				'specialCharacters',
 				'style',
 				'strikethrough',
 				'restrictedEditingException',
@@ -206,8 +195,7 @@ class Editor extends ClassicEditor {
 				'superscript',
 				'textPartLanguage',
 				'todoList',
-				'underline',
-				'specialCharacters'
+				'underline'
 			]
 		},
 		language: 'en',
@@ -218,7 +206,8 @@ class Editor extends ClassicEditor {
 				'imageStyle:inline',
 				'imageStyle:block',
 				'imageStyle:side',
-				'linkImage'
+				'linkImage',
+				'resizeImage'
 			]
 		},
 		table: {
@@ -233,4 +222,4 @@ class Editor extends ClassicEditor {
 	};
 }
 
-export default { Editor, EditorWatchdog };
+export default Editor;
